@@ -1,0 +1,26 @@
+# ---------- 系统与编辑器 ----------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ---------- 依赖与构建产物 ----------
+node_modules/
+dist/
+build/
+*.log
+npm-debug.log*
+
+# ---------- 密钥与环境变量（重要：API Key 绝不进仓库）----------
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets.json
+
+# ---------- 本地脚本与截图原始文件 ----------
+scripts/local/
+docs/screenshots/raw/
