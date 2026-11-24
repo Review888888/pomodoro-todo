@@ -51,6 +51,15 @@
                     data.choices[0].message && data.choices[0].message.content;
       if (!content) throw new Error('接口没有返回内容');
       return content.trim();
+    } catch (err) {
+      // fetch 的原始报错对用户毫无意义，这里翻译成能看懂的原因
+      if (err.name === 'AbortError') {
+        throw new Error('请求超时，30 秒内没有响应');
+      }
+      if (err instanceof TypeError) {
+        throw new Error('网络请求发不出去，可能是跨域被拦或网络不通');
+      }
+      throw err;
     } finally {
       clearTimeout(timer);
     }
